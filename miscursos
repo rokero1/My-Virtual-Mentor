@@ -1,0 +1,131 @@
+<?php
+//Proceso de conexión con la base de datos
+include"conexion.php";
+
+//Iniciar Sesión
+session_start();
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "index.php"
+</script>';
+}
+
+$id_usuario = $_SESSION['nombres'];
+$id_usuario = $_SESSION['idusuario'];
+$consulta= "SELECT nombres, usuario FROM usuario WHERE idusuario='".$id_usuario."'" ; 
+$resultado= mysql_query($consulta,$conex) or die (mysql_error());
+$fila=mysql_fetch_array($resultado);
+$usuario= $fila['usuario'];
+$nombres= $fila['nombres'];
+ 
+ ?>
+ 
+  <form action="procesarcurso.php" method="post" >
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>My Virtual Mentor</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <style type="text/css">
+<!--
+.Estilo9 {color: #AFEFFF; font-family: Arial, Helvetica, sans-serif; }
+.Estilo20 {font-size: 16em}
+.Estilo21 {font-size: 9em; }
+.Estilo22 {font-size: 2em; }
+-->
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Universidad<a href="#">La Salle </a></h1>
+        <div class="slogan">My Virtual Mentor </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="principal.php">Inicio</a></li>
+  	  <li class="current"><a href="miscursos.php">Mis cursos</a></li>
+		  <li class="current"><a href="mistutorias.php">Mis tutorias</a></li>
+          <li><a href="desconectar_usuario.php">Cerrar sesión </a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+        <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Bienvenido <?php echo $nombres;?></h3>
+        <h4>&nbsp;</h4>
+        <p><a href="registrousuarios.php"></a>
+		
+		</p>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1 align="center"></p>
+        <p><?PHP
+  include("conexion.php");
+  
+
+  $SQL="select t.nombre_tema from tema t , usuario u where t.idusuario=u.idusuario and t.idusuario='".$id_usuario."'";     
+  $RESSQL=mysql_query($SQL,$conex); 
+?></p>
+
+        <table width="%" height="160" border="1" align="center" bordercolor="#FFFFFF">
+          <tr>
+           
+            <td width="113" bgcolor="#0000FF"> <div align="center" class="Estilo22">MIS CURSOS </div></td>
+          </tr>
+          <?PHP
+  $i=0;
+  $Color1="#FFFFFF";
+  $Color2="#FFFFFF";
+  while($VecRes=mysql_fetch_row($RESSQL))
+  {
+  $i++;
+  if($i%2==0) $Color=$Color1;
+         else $Color=$Color2;
+  ?>
+          <tr>
+            
+            <td bgcolor="<?PHP echo $Color;?>"><div align="center" class="Estilo22"><?PHP echo $VecRes[0]; ?></div></td>
+			<td><input name="radio" type="radio" value="<?php echo $i;?>"></td>
+          </tr>
+          <?PHP
+  }
+  ?>
+          <tr>
+            <td height="22" colspan="10" bgcolor="#0095B6"><div align="right" class="Estilo9"><span class="Estilo20"><span class="Estilo21"><span class="Estilo22"></span></span></span></div></td>
+          </tr>
+        </table>
+        
+          <label>
+            <div align="center">
+              <input type="submit" name="Submit" value="Enviar">
+        </div>
+          </label>
+        </form>
+        <p>&nbsp;</p>
+        <p>		</p>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy;RCP-ULS2013 </p>
+    </div>
+  </div>
+</body>
+</html>

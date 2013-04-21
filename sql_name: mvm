@@ -1,0 +1,196 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 21-04-2013 a las 16:07:57
+-- Versión del servidor: 5.0.67
+-- Versión de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Base de datos: `mvm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cursos`
+--
+
+CREATE TABLE IF NOT EXISTS `cursos` (
+  `idusuario` int(3) NOT NULL,
+  `id_tema` int(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `cursos`
+--
+
+INSERT INTO `cursos` (`idusuario`, `id_tema`) VALUES
+(5, 1),
+(5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `examenes`
+--
+
+CREATE TABLE IF NOT EXISTS `examenes` (
+  `idusuario` int(3) NOT NULL,
+  `id_examenes` int(3) NOT NULL auto_increment,
+  `nombre_examen` varchar(300) NOT NULL,
+  PRIMARY KEY  (`id_examenes`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `examenes`
+--
+
+INSERT INTO `examenes` (`idusuario`, `id_examenes`, `nombre_examen`) VALUES
+(14, 1, 'Primer examen de Pro'),
+(14, 2, 'Primer examen Progra');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mis_temas`
+--
+
+CREATE TABLE IF NOT EXISTS `mis_temas` (
+  `idusuario` int(3) NOT NULL,
+  `id_plan_estudios` int(3) NOT NULL,
+  `id_tema` int(3) NOT NULL,
+  `id_practicas` int(3) NOT NULL,
+  `id_examenes` int(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `mis_temas`
+--
+
+INSERT INTO `mis_temas` (`idusuario`, `id_plan_estudios`, `id_tema`, `id_practicas`, `id_examenes`) VALUES
+(14, 1, 1, 1, 1),
+(14, 2, 2, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plan_estudios`
+--
+
+CREATE TABLE IF NOT EXISTS `plan_estudios` (
+  `idusuario` int(3) NOT NULL,
+  `id_plan_estudios` int(3) NOT NULL auto_increment,
+  `nombre_plan_estudios` varchar(300) NOT NULL,
+  PRIMARY KEY  (`id_plan_estudios`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `plan_estudios`
+--
+
+INSERT INTO `plan_estudios` (`idusuario`, `id_plan_estudios`, `nombre_plan_estudios`) VALUES
+(14, 1, 'Plan de estudios de programación '),
+(14, 2, 'Mostramos la redacci');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `practicas`
+--
+
+CREATE TABLE IF NOT EXISTS `practicas` (
+  `idusuario` int(3) NOT NULL,
+  `id_practicas` int(3) NOT NULL auto_increment,
+  `nombre_practicas` varchar(300) NOT NULL,
+  PRIMARY KEY  (`id_practicas`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `practicas`
+--
+
+INSERT INTO `practicas` (`idusuario`, `id_practicas`, `nombre_practicas`) VALUES
+(14, 1, 'Práctica 1 de Programación lineal '),
+(14, 2, 'práctica 1 de Progra');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tema`
+--
+
+CREATE TABLE IF NOT EXISTS `tema` (
+  `idusuario` int(3) NOT NULL,
+  `id_tema` int(3) NOT NULL auto_increment,
+  `nombre_tema` varchar(300) NOT NULL,
+  PRIMARY KEY  (`id_tema`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `tema`
+--
+
+INSERT INTO `tema` (`idusuario`, `id_tema`, `nombre_tema`) VALUES
+(14, 1, 'Programación Lineal '),
+(14, 2, 'Programación Android');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `tipo_usuario` (
+  `id_tipousuario` int(3) NOT NULL auto_increment,
+  `nombre` varchar(30) NOT NULL,
+  PRIMARY KEY  (`id_tipousuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcar la base de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipousuario`, `nombre`) VALUES
+(1, 'Tutor'),
+(2, 'Estudiante'),
+(3, 'Ambos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `idusuario` int(3) NOT NULL auto_increment,
+  `nombres` varchar(30) NOT NULL,
+  `apellidos` varchar(30) NOT NULL,
+  `sexo` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `contrasena` varchar(20) NOT NULL,
+  `id_tipousuario` int(3) NOT NULL,
+  PRIMARY KEY  (`idusuario`),
+  UNIQUE KEY `idusuario` (`idusuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Volcar la base de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `nombres`, `apellidos`, `sexo`, `email`, `usuario`, `contrasena`, `id_tipousuario`) VALUES
+(4, 'Mijael', 'Colquehuanca', 'Masculino', 'mijacolque@gmail.com', 'mijacolque', 'mija16291', 3),
+(5, 'Ruddy', 'Romero', 'Masculino', 'ruddy@gmail.com', 'ruddyromero', 'ruddyromero', 2),
+(6, 'Juan', 'De los Palotes', 'Femenino', 'juanpalotes@gmail.com', 'juanpalotes', 'juanpalotes', 3),
+(7, 'Andres ', 'Loria', 'Masculino ', 'andresloria@gmail.com', 'andres', 'andres', 3),
+(8, 'Alejandro ', 'Tamayo Velasquez ', 'Masculino', 'alejandrotamayo@outlook.com', 'ale123', 'alejandro', 2),
+(9, 'Lourdes ', 'Vargas Rivera', 'Femenino', 'lourdesvargas@gmail.com', 'lourdesvargas', 'lourdes', 2),
+(10, 'Maria ', 'Fernanda Melgar ', 'Femenino', 'fernandita@gmail.com', 'maria', 'maria', 3),
+(11, 'Celina ', 'Bustillos', 'Femenino', 'celina456@gmal.com', 'celina', 'celina', 3),
+(12, 'Ivan', 'Huanca Quisbert ', 'Masculino', 'ivan_el_titan@gmail.com', 'ivan', 'ivan', 2),
+(13, 'Luigi ', 'Enriquez ', 'Masculino', 'luigi@outlook.com', 'luigi', 'luigi', 2),
+(14, 'Jean Carla', 'Rojas Aliaga', 'Femenino', 'jeancarla@outlook.com', 'jeancarla', 'jeancarla', 1);

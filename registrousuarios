@@ -1,0 +1,99 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>My Virtual Mentor</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <style type="text/css">
+<!--
+.Estilo11 {color: #444;
+  font-size: 25px;
+	font-family: "trebuchet MS";
+}
+.Estilo12 {color: #F4F4F4}
+.Estilo3 {font-size: 15pt; font-family: Narkisim; }
+.Estilo4 {font-size: 2em; font-family: Narkisim; }
+-->
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Universidad<a href="#">La Salle </a></h1>
+        <div class="slogan">My Virtual Mentor </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="index.php">Inicio</a></li>
+          <li><a href="contact.html">Acerca de..</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container"></div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <div id="div">
+          <div id="div2">
+            <form action="registrar.php" method="post" name="form1" id="form1">
+              <table width="121%" border="5" bordercolor="#F4F4F4">
+                <tr>
+                  <td width="23%"><span class="Estilo20">Nombre</span></td>
+                  <td width="77%"><label>
+                    <input name="nombres" type="text" id="nombres" size="50" />
+                    </label>                  </td>
+                </tr>
+                <tr>
+                  <td><span class="Estilo20">Apellidos</span></td>
+                  <td><input name="apellidos" type="text" id="apellidos" size="50" /></td>
+                </tr>
+                <tr>
+                  <td><span class="Estilo20">Sexo</span></td>
+                  <td><label>Masculino
+                    <input name="sexo" type="radio" value="0" />
+                        <span class="Estilo12">_______</span> Femenino </label>
+                      <input name="sexo" type="radio" value="1" />                  </td>
+                </tr>
+
+                <tr>
+                  <td><span class="Estilo20">email</span></td>
+                  <td><input name="email" type="text" id="email" />
+                      <label></label>                  </td>
+                </tr>
+                <tr>
+                  <td><span class="Estilo6">Nombre de usuario </span></td>
+                  <td><input name="usuario" type="text" id="usuario" /></td>
+                </tr>
+                <tr>
+                  <td>Contrase&ntilde;a </td>
+                  <td><input name="contrasena" type="password" id="contrasena" /></td>
+                </tr>
+
+                <tr>
+                  <td width="23%">&nbsp;</td>
+                  <td width="77%"><div align="center">
+                      <input name="Submit" type="submit" class="Estilo11" value="Enviar" />
+                  </div></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+        <h1 align="center">&nbsp;</h1>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy;RCP-ULS2013 </p>
+    </div>
+  </div>
+</body>
+</html>

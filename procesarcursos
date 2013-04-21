@@ -1,0 +1,30 @@
+<?php 
+include"conexion.php";
+
+//Iniciar Sesión
+session_start();
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "index.php"
+</script>';
+}
+
+$radio=$_POST['radio'];
+if($radio='1')
+{
+if($nombre='Programación Lineal')
+{
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "pl.php"
+</script>';
+
+
+}
+
+
+}
+?>

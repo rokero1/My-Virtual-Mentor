@@ -1,0 +1,68 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>My Virtual Mentor</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Universidad<a href="#">La Salle </a></h1>
+        <div class="slogan">My Virtual Mentor </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="index.php">Inicio</a></li>
+          <li><a href="contact.html">Acerca de..</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+        <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Ingreso : </h3>
+        <form action="script_acceso_usuario.php" method="post" name="form1" id="form1">
+          <div>
+            <div>
+              <label>Usuario: </label>
+              <input type="text" name = "usuario"/>
+            </div>
+            <div>
+              <label>Contrase&ntilde;a: </label>
+              <input name = "contrasena" type="password" id="contrasena" />
+            </div>
+            <div>
+              <input type="submit" name ="iniciar" value="Iniciar Sesion"/>
+            </div>
+          </div>
+        </form>
+        <h4>&nbsp;</h4>
+        <p><a href="registrousuarios.php">Eres nuevo ???? </a></p>
+        </div>
+        </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1 align="center">NASA GIRLS </h1>
+        <h1 align="center">(Giving Initiative and Relevance to Learning Science)</h1>
+        <p align="justify">Es un programa de tutor&iacute;a virtual mediante programas de chat de v&iacute;deo disponibles en el mercado a los mentores par de la NASA . El programa ofrece a los j&oacute;venes la oportunidad de interactuar y aprender de los ingenieros reales, los astronautas, los cient&iacute;ficos y los tecn&oacute;logos y los inspira a contribuir a la ciencia, tecnolog&iacute;a, ingenier&iacute;a y matem&aacute;ticas. Trabajan juntos durante cinco semanas en el verano en los proyectos predefinidos que son tambi&eacute;n basada en la web.</p>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy;RCP-ULS2013 </p>
+    </div>
+  </div>
+</body>
+</html>

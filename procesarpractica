@@ -1,0 +1,40 @@
+<?php 
+include"conexion.php";
+
+//Iniciar Sesión
+session_start();
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "index.php"
+</script>';
+}
+
+ $radio=$_POST['radio'];
+ $radio=$_POST['radio'];
+if($radio=='1')
+  	{
+if($radio=='2')
+{
+if($radio=='3')
+{
+$nota=$nota +20;
+}}}
+if($radio1=='1')
+		{
+if($radio=='2')
+{
+if($radio=='3')
+{
+$nota=$nota +20;
+}}}
+if($radio3=='1')
+		{
+if($radio2=='2')
+{
+if($radio2=='3')
+{
+$nota=$nota +20;
+}}}

@@ -1,0 +1,142 @@
+<?php
+//Proceso de conexión con la base de datos
+include"conexion.php";
+
+//Iniciar Sesión
+session_start();
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "index.php"
+</script>';
+}
+
+$id_usuario = $_SESSION['nombres'];
+$id_usuario = $_SESSION['idusuario'];
+$consulta= "SELECT nombres, usuario FROM usuario WHERE idusuario='".$id_usuario."'" ; 
+$resultado= mysql_query($consulta,$conex) or die (mysql_error());
+$fila=mysql_fetch_array($resultado);
+$usuario= $fila['usuario'];
+$nombres= $fila['nombres'];
+ 
+ ?>
+ 
+ 
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>My Virtual Mentor</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <style type="text/css">
+<!--
+.Estilo14 {color: #000000; font-family: Arial, Helvetica, sans-serif; }
+.Estilo9 {color: #AFEFFF; font-family: Arial, Helvetica, sans-serif; }
+.Estilo18 {color: #000000}
+.Estilo19 {color: #CCFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; }
+-->
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Universidad<a href="#">La Salle </a></h1>
+        <div class="slogan">My Virtual Mentor </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="principal.php">Inicio</a></li>
+  	  <li class="current"><a href="miscursos.php">Mis cursos</a></li>
+		  <li class="current"><a href="mistutorias.php">Mis tutorias</a></li>
+          <li><a href="desconectar_usuario.php">Cerrar sesión </a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+        <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Bienvenido <?php echo $nombres;?></h3>
+        <h4>&nbsp;</h4>
+        <p><a href="registrousuarios.php"></a>
+		
+		</p>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1 align="center"></p>
+        <p><?PHP
+  include("conexion.php");
+  
+
+$SQL="SELECT a.nombres, a.apellidos, b.idusuario, c.nombre_plan_estudios,d.nombre_tema, e.nombre_practicas, f.nombre_examen
+FROM usuario a, mis_temas b, plan_estudios c, tema d, practicas e,examenes f
+WHERE a.idusuario = b.idusuario
+and c.id_plan_estudios=b.id_plan_estudios
+and b.id_tema=d.id_tema
+and e.id_practicas= b.id_practicas
+and f.id_examenes = b.id_examenes
+and a.idusuario='".$id_usuario."'";     
+  $RESSQL=mysql_query($SQL,$conex); 
+?></p>
+        <p>
+		<table width="52%" height="138" border="1" align="center" bordercolor="#0095B6">
+          <tr>
+            <td width="71" height="40" bgcolor="#0095B6">NOMBRE</td>
+            <td width="186" bgcolor="#0095B6">APELLIDO</td>
+            <td width="168" bgcolor="#0095B6">ID USUARIO </td>
+            <td width="144" bgcolor="#0095B6">PLAN DE ESTUDIOS</td>
+			<td width="144" bgcolor="#0095B6">TEMA</td>
+			<td width="144" bgcolor="#0095B6">PRACTICAS</td>
+			<td width="144" bgcolor="#0095B6">EXAMEN</td>
+            
+          </tr>
+          <?PHP
+  $i=0;
+  $Color1="#FFFFFF";
+  $Color2="#FFFFFF";
+  while($VecRes=mysql_fetch_row($RESSQL))
+  {
+  $i++;
+  if($i%2==0) $Color=$Color1;
+         else $Color=$Color2;
+  ?>
+          <tr>
+            <td height="37" bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[0]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[1]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[2]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[3]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[4]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[5]; ?></td>
+            <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[6]; ?></td>
+            
+          </tr>
+          <?PHP
+  }
+  ?>
+          <tr>
+            <td height="22" colspan="7" bgcolor="#0095B6"><div align="right" class="Estilo9"></div></td>
+          </tr>
+        </table>
+		</p>
+<p>		</p>
+    </div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy;RCP-ULS2013 </p>
+    </div>
+  </div>
+</body>
+</html>

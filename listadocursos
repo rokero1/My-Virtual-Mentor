@@ -1,0 +1,84 @@
+<?PHP
+  include("conexion.php");
+  if(isset($_GET["Accion"]))
+  {
+    if($_GET["Accion"]=="Borrado")
+    {
+	   $Cod_Au=$_GET["id_curso"];
+	   $SQL="DELETE FROM cursos WHERE id_curso=".$id_curso.";";
+	   $RESSQL=mysql_query($SQL,$con);
+	   $RESSQL=0; 
+	  }
+  }
+  $SQL="SELECT * FROM cursos; ";     
+  $RESSQL=mysql_query($SQL,$conex);
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<style type="text/css">
+<!--
+.Estilo1 {font-size: 18px}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function AbrirVentana(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+
+<body>
+<form name="form1" id="form1" method="post" action="">
+  <input name="Cod" type="hidden" id="Cod" value="x" />
+  <input name="Descripcion" type="hidden" id="Descripcion" value="x" />
+  <input name="Fecha" type="hidden" id="Fecha" value="x" />
+  <input name="Editorial" type="hidden" id="Editorial" value="x" />
+  <input name="Tipo" type="hidden" id="Tipo" value="x" />
+</form>
+<table width="1579" height="64" border="1" align="center">
+ <tr>
+    <td colspan="12" bgcolor="#009933"><div align="right"><a href="#" onclick="AbrirVentana('AdicionAula.php','ventana','width=750,height=400')"><span class="Estilo3">Adicion</span></a></div></td>
+  </tr>
+  <tr>
+    <td width="81" bgcolor="#009933"><div align="center"><span class="Estilo1">Codigo de curso</span></div></td>
+    <td width="96" bgcolor="#009933"><div align="center"><span class="Estilo1">Nombre</a></span></div></td>
+    <td width="335" bgcolor="#009933"><div align="center"><span class="Estilo1">Id Usuario</span></div></td>
+   
+   
+	<td width="70" bgcolor="#009933"><div align="center"><span class="Estilo1">Borrado</span></div></td>
+	<td width="97" bgcolor="#009933"><div align="center"><span class="Estilo1">Modificacion</span></div></td>
+  </tr>
+  <?PHP
+  $i=0;
+  $Color1="#99CC66";
+  $Color2="#99FF66";
+  while($VecRes=mysql_fetch_row($RESSQL))
+  {
+  $i++;
+  if($i%2==0) $Color=$Color1;
+         else $Color=$Color2;
+  ?>
+  <tr>
+    <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[0]; ?></td>
+    <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[1]; ?></td>
+    <td bgcolor="<?PHP echo $Color;?>"><?PHP echo $VecRes[2]; ?></td>
+
+	<td ><div align="center"><a href="ListadoLibro.php?Accion=Borrado&id_curso=<?PHP echo $VecRes[0]; ?>"><img src="../sia/borrar.jpg" width="33" height="25" border="0" /></a></div></td>
+	<td bgcolor="<?PHP echo $Color;?>">
+	<a href="#" onclick="AbrirVentana('ModificacionAulas.php?Cod_Au=<?PHP echo $VecRes[0] ; ?>','ventana','width=750,height=400')"><span class="Estilo3">Modificar</span></a>	</td>
+  </tr>
+  <?PHP
+  }
+  ?>
+   <tr>
+    <td colspan="12" bgcolor="#009933"><div align="right">Adiciona</div></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<?php
+//Proceso de conexión con la base de datos
+include"conexion.php";
+
+//Iniciar Sesión
+session_start();
+
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("usuario no autenticado")
+self.location = "index.php"
+</script>';
+}
+
+$id_usuario = $_SESSION['nombres'];
+$id_usuario = $_SESSION['idusuario'];
+$consulta= "SELECT nombres, usuario FROM usuario WHERE idusuario='".$id_usuario."'" ; 
+$resultado= mysql_query($consulta,$conex) or die (mysql_error());
+$fila=mysql_fetch_array($resultado);
+$usuario= $fila['usuario'];
+$nombres= $fila['nombres'];
+ 
+ ?>
+ 
+ 
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>My Virtual Mentor</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Universidad<a href="#">La Salle </a></h1>
+        <div class="slogan">My Virtual Mentor </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="principal.php">Inicio</a></li>
+  	  <li class="current"><a href="miscursos.php">Mis cursos</a></li>
+		  <li class="current"><a href="mistutorias.php">Mis tutorias</a></li>
+          <li><a href="desconectar_usuario.php">Cerrar sesión </a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+        <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Bienvenido <?php echo $nombres;?></h3>
+        <h3>&nbsp;</h3>
+        <h3 align="center"><a href="pl.php">Ir al men&uacute; principal </a></h3>
+        <h4>&nbsp;</h4>
+        <p><a href="registrousuarios.php"></a>
+		
+		</p>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1 align="center"></p>
+        <h3 align="center" id="sites-page-title-header" xmlns="http://www.w3.org/1999/xhtml"><strong>CURSO DE PROGRAMACION LINEAL </strong></h3>
+        <h3 xmlns="http://www.w3.org/1999/xhtml" align="left"><span dir="ltr">Contenido</span></h3>
+        <h3 align="left" xmlns="http://www.w3.org/1999/xhtml"><strong>Lecci&oacute;n 1 Antecedentes y origen de la I.O&nbsp;</strong></h3>
+        <p align="justify">A lo largo de la historia es frecuente encontrarse con la colaboraci&oacute;n entre cient&iacute;ficos y militares con el fin de dictaminar la decisi&oacute;n &oacute;ptima en la batalla. Es por esto que muchos expertos consideran el inicio de la Investigaci&oacute;n Operativa en el siglo III A.C., durante la II Guerra P&uacute;nica, con el an&aacute;lisis y soluci&oacute;n que Arqu&iacute;medes propuso para la defensa de la ciudad de Siracusa, sitiada por los romanos. Entre sus inventos se encontraban la catapulta, y un sistema de espejos con el que incendiaba las embarcaciones enemigas al enfocarlas con los rayos del sol.</p>
+        <p align="justify">En 1503, Leonardo da Vinci particip&oacute; como ingeniero en la guerra contra Pisa ya que conoc&iacute;a t&eacute;cnicas para realizar bombardeos, construir barcos, veh&iacute;culos acorazados, ca&ntilde;ones, catapultas, y otras m&aacute;quinas b&eacute;licas.</p>
+        <p align="justify">Otro antecedente de uso de la Investigaci&oacute;n Operativa se debe a F. W. Lanchester, quien hizo un estudio matem&aacute;tico sobre la potencia bal&iacute;stica de las fuerzas opositoras y desarroll&oacute;, a partir de un sistema de ecuaciones diferenciales, la Ley Cuadr&aacute;tica de Combate de Lanchester, con la que era posible determinar el desenlace de una batalla militar.</p>
+        <p align="justify">Thomas Edison tambi&eacute;n hizo uso de la Investigaci&oacute;n Operativa, contribuyendo en la guerra antisubmarina, con sus grandes ideas, como la protecci&oacute;n anti-torpedos para los barcos.</p>
+        <p align="justify">Desde el punto de vista matem&aacute;tico, en los siglos XVII y XVIII, Newton, Leibnitz, Bernoulli y Lagrange, trabajaron en obtener m&aacute;ximos y m&iacute;nimos condicionas de ciertas funciones. El matem&aacute;tico franc&eacute;s Jean Baptiste-Joseph Fourier esboz&oacute; m&eacute;todos de la actual programaci&oacute;n lineal. Y en los &uacute;ltimos a&ntilde;os del siglo XVIII, Gaspar Monge asent&oacute; los precedentes del M&eacute;todo Gr&aacute;fico gracias a su desarrollo de la Geometr&iacute;a Descriptiva.</p>
+        <p align="justify">Janos Von Neumann public&oacute; en 1928 su trabajo "Teor&iacute;a de Juegos", que proporcion&oacute; fundamentos matem&aacute;ticos a la Programaci&oacute;n Lineal. Posteriormente, en 1947, vision&oacute; la similitud entre los problemas de programaci&oacute;n lineal y la teor&iacute;a de matrices que desarroll&oacute;.</p>
+        <p align="justify">En 1939, el matem&aacute;tico ruso L. Kantorovich, en colaboraci&oacute;n con el matem&aacute;tico holand&eacute;s T. Koopmans, desarroll&oacute; la teor&iacute;a matem&aacute;tica llamada "Programaci&oacute;n Lineal", por la que les fue concedido el premio Nobel.</p>
+        <p align="justify">A finales de los a&ntilde;os 30 y principios de los 40, George Joseph Stigler plante&oacute; un problema particular conocido como r&eacute;gimen alimenticio optimal o m&aacute;s com&uacute;nmente conocido como problema de la dieta, que surgi&oacute; a ra&iacute;z de la preocupaci&oacute;n del ej&eacute;rcito americano por asegurar unos requerimientos nutricionales al menor coste para sus tropas. Fue resuelto mediante un m&eacute;todo heur&iacute;stico cuya soluci&oacute;n difer&iacute;a tan s&oacute;lo unos c&eacute;ntimos de la soluci&oacute;n aportada a&ntilde;os m&aacute;s tarde por el M&eacute;todo Simplex.</p>
+        <p align="justify">Durante los a&ntilde;os 1941 y 1942, Kantorovich y Koopmans estudiaron de forma independiente el problema del transporte por primera vez, conoci&eacute;ndose este tipo de problemas como problema de Koopmans-Kantorovich. Para su soluci&oacute;n, emplearon m&eacute;todos geom&eacute;tricos que est&aacute;n relacionados con la teor&iacute;a de convexidad de Minkowski.</p>
+        <p align="justify">Pero no se considera que ha nacido una nueva ciencia llamada Investigaci&oacute;n Operativa o Investigaci&oacute;n de Operaciones hasta la II Guerra Mundial, durante la batalla de Inglaterra, donde la Fuerza A&eacute;rea Alemana, es decir la Luftwaffe, estaba sometiendo a los brit&aacute;nicos a un duro ataque a&eacute;reo ya que estos ten&iacute;an una capacidad a&eacute;rea peque&ntilde;a, aunque experimentada en el combate. El gobierno brit&aacute;nico, buscando alg&uacute;n m&eacute;todo para defender su pa&iacute;s, convoc&oacute; a varios cient&iacute;ficos de diversas disciplinas para tratar de resolver el problema de sacar el m&aacute;ximo beneficio de los radares de que dispon&iacute;an. Gracias a su trabajo determinando la localizaci&oacute;n &oacute;ptima de las antenas y la mejor distribuci&oacute;n de las se&ntilde;ales consiguieron duplicar la efectividad del sistema de defensa a&eacute;rea.</p>
+        <p align="justify">Al apreciar el alcance de &eacute;sta nueva disciplina, Inglaterra cre&oacute; otros grupos de la misma &iacute;ndole para obtener resultados &oacute;ptimos en la contienda. Al igual que Estados Unidos (EEUU), al unirse a la Guerra en 1942, creando el proyecto SCOOP (Scientific Computation Of Optimum Programs), donde se encontraba trabajando George Bernard Dantzig, quien desarroll&oacute; en 1947 el algoritmo del m&eacute;todo Simplex.</p>
+        <p align="justify">Durante la Guerra Fr&iacute;a, la antigua Uni&oacute;n Sovi&eacute;tica (URRS), excluida del Plan Marshall, quiso controlar las comunicaciones terrestres, incluyendo rutas fluviales, de Berl&iacute;n. Para evitar la rendici&oacute;n de la ciudad, y su sumisi&oacute;n a formar parte de la zona comunista alemana, Inglaterra y Estados Unidos decidieron abastecer la ciudad, o bien mediante convoyes escoltados (lo que podr&iacute;a dar lugar a nuevos enfrentamientos) o mediante puente a&eacute;reo, rompiendo o evadiendo en cualquier caso el bloqueo de Berl&iacute;n. Se opt&oacute; por &eacute;sta segunda opci&oacute;n, iniciando la Luftbr&uuml;cke (puente a&eacute;reo) el 25 de junio de 1948. &Eacute;ste fue otro de los problemas en los que particip&oacute; el grupo SCOOP, en diciembre de ese mismo a&ntilde;o se consegu&iacute;a abastecer con 4500 toneladas diarias, y tras estudios de Investigaci&oacute;n Operativa se optimiz&oacute; el abastecimiento hasta llegar a las 8000~9000 toneladas diarias en marzo de 1949. &Eacute;sta cifra era la misma que se hubiera transportado por medios terrestres, por lo que los sovi&eacute;ticos decidieron levantar el bloqueo el 12 de mayo de 1949.</p>
+        <p align="justify">Tras la Segunda Guerra Mundial, la organizaci&oacute;n de los recursos de Estados Unidos (EEUU) (energ&iacute;a, armamentos, y todo tipo de suministros) se estim&oacute; oportuno realizarla mediante modelos de optimizaci&oacute;n, resueltos mediante la programaci&oacute;n lineal.</p>
+        <p align="justify">Al mismo tiempo, que se desarrolla la doctrina de la Investigaci&oacute;n Operativa, se desarrollan las t&eacute;cnicas de computaci&oacute;n y ordenadores, gracias a los cuales se redujo el tiempo de resoluci&oacute;n de los problemas.</p>
+        <p align="justify">El primer resultado de estas t&eacute;cnicas fue dado en el a&ntilde;o 1952, cuando se us&oacute; un ordenador SEAC del National Bureau of Standars para obtener la soluci&oacute;n de un problema. El &eacute;xito en el tiempo de resoluci&oacute;n fue tan alentador que de inmediato se us&oacute; para todo tipo de problemas militares, como determinar la altura &oacute;ptima a la que deber&iacute;an volar los aviones para localizar los submarinos enemigos, gesti&oacute;n de fondos monetarios para log&iacute;stica y armamento, e incluso determinar la profundidad a la que se deb&iacute;an enviar las cargas para alcanzar los submarinos enemigos de forma que causara el mayor n&uacute;mero de bajas, que se tradujo en un aumento de hasta cinco veces en la eficacia de la fuerza a&eacute;rea.</p>
+        <p align="justify">Durante las d&eacute;cadas de los 50 y 60, crece el inter&eacute;s y el desarrollo de la Investigaci&oacute;n Operativa, debido a su aplicaci&oacute;n en el &aacute;mbito del comercio y la industria. Sirva de ejemplo, el problema del c&aacute;lculo del plan &oacute;ptimo de transporte de arena de construcci&oacute;n a las obras de edificaci&oacute;n de la ciudad de Mosc&uacute;, en los que hab&iacute;a 10 puntos de origen y 230 de destino. Para resolverlo, se us&oacute; un ordenador Strena, que emple&oacute; 10 d&iacute;as en el mes de junio de 1958, y tal soluci&oacute;n aport&oacute; una reducci&oacute;n del 11% de los gastos respecto a los costes originales.</p>
+        <p align="justify">En 1958 se aplicaron los m&eacute;todos de la programaci&oacute;n lineal a un problema concreto: el c&aacute;lculo del plan &oacute;ptimo del transporte de arena de construcci&oacute;n a las obras de edificaci&oacute;n de la ciudad de Mosc&uacute;. En este problema hab&iacute;a 10 puntos de partida y 230 de llegada. El plan &oacute;ptimo de transporte, calculado con el ordenador Strena en 10 d&iacute;as del mes de junio, redujo un 11% los gastos respecto a los costes previstos.</p>
+        <p align="justify">Anteriormente ya se hab&iacute;an planteado &eacute;stos problemas en una disciplina conocida como Investigaci&oacute;n de Empresas o An&aacute;lisis de Empresas, que no dispon&iacute;an de m&eacute;todos tan efectivos como los desarrollados durante la Segunda Guerra Mundial (por ejemplo el M&eacute;todo Simplex). Las aplicaciones no b&eacute;licas de la Investigaci&oacute;n Operativa se extienden tanto como se imagine, con problemas que van desde la alimentaci&oacute;n, ganader&iacute;a, distribuci&oacute;n de campos de cultivo en agricultura, transporte de mercanc&iacute;as, localizaci&oacute;n, distribuci&oacute;n de personal, problemas de redes, colas, grafos, etc.</p>
+        <p align="justify">&nbsp;</p>
+        <p align="left" xmlns="http://www.w3.org/1999/xhtml">&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>		</p>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy;RCP-ULS2013 </p>
+    </div>
+  </div>
+</body>
+</html>

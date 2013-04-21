@@ -1,0 +1,49 @@
+
+<?php
+include"conexion.php";
+
+$nombre=$_POST['nombres'];
+$apellidos=$_POST['apellidos'];
+$sexo=$_POST['sexo'];
+
+$email=$_POST['email'];
+$usuario=$_POST['usuario'];
+$contrasena=$_POST['contrasena'];
+
+
+if (isset($nombre,$apellidos,$sexo,$email,$usuario,$contrasena) ) 
+ {  
+  
+if($_POST["sexo"]=="0")
+{
+$sexo='Masculino';
+
+}
+if($_POST["sexo"]=="1")
+{
+$sexo='Femenino';
+}
+if(strlen($contrasena)>=8)
+{
+   $sql="insert into usuario (nombres,apellidos,sexo,email,usuario,contrasena) values('$nombre', '$apellidos', '$sexo', '$email','$usuario','$contrasena')";
+mysql_query($sql);
+   echo '<script language = javascript>
+  alert("El usuario ha sido registrado satisfactoriamente")
+	self.location = "index.php"
+	</script>'; 
+}    else{
+        echo '<script language = javascript>
+	alert("Contrasena minimo 8")
+	 javascript:history.back()
+	</script>';
+    
+  }
+  }
+    
+ else{
+       echo '<script language = javascript>
+	alert("Por favor llene todods los campos...")
+	javascript:history.back()
+	</script>';
+  }   
+?>

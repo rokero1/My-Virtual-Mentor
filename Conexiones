@@ -1,0 +1,7 @@
+<?php
+   $conex = mysql_connect("localhost", "root", "")
+  	or die("No se pudo realizar la conexion");
+	mysql_select_db("mvm",$conex)
+		or die("ERROR con la base de datos");
+
+?>
